@@ -121,7 +121,7 @@ That is out of scope for this post though.
    
 
 * Our iistyle
-This is the CSS sheet we reference to style our pages.
+  This is the CSS sheet we reference to style our pages.
 #+BEGIN_SRC css :tangle iistyle.css
   /*
   ii styling for orgs exported to html!
@@ -149,6 +149,11 @@ This is the CSS sheet we reference to style our pages.
     color: var(--primary_color);
     font-family: var(--primary_font);
     font-size: var(--font-size);
+  }
+
+  div#content {
+    width: 70%;
+    padding: 3em;
   }
 #+END_SRC
 
