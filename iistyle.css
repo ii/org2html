@@ -2,6 +2,17 @@
 ii styling for orgs exported to html!
 */
 
+/*
+let's use variables, to quickly change color and font later.
+*/
+:root {
+  --primary_bg: aliceblue;
+  --primary_color: #111111;
+  --primary_font: 'Fira Sans', sans-serif;  /* currently requires dependency to google fonts, but this is an open source font.*/
+  --font-size: 24px;
+}
+
+
 body, html {
   padding: 0;
   margin: 0;
@@ -9,7 +20,8 @@ body, html {
 }
 
 body {
-  background: aliceblue;
-  color: indigo;
-  font-family: 'Fira Sans', sans-serif;
+  background: var(--primary_bg);
+  color: var(--primary_color);
+  font-family: var(--primary_font);
+  font-size: var(--font-size);
 }
