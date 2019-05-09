@@ -6,6 +6,7 @@
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_CONTAINER: div
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://iistyle.netlify.com/iistyle.css" />
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 #+DESCRIPTION: Explaining how we go from org to html
 #+KEYWORDS:
 #+LATEX_HEADER:
