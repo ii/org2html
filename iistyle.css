@@ -24,6 +24,7 @@ body {
   color: var(--primary_color);
   font-family: var(--primary_font);
   font-size: var(--font-size);
+  font-weight: 300;
 }
 
 div#content {

@@ -6,10 +6,9 @@
 #+HTML_DOCTYPE: xhtml-strict
 #+HTML_CONTAINER: div
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://iistyle.netlify.com/iistyle.css" />
-#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700" rel="stylesheet">
 #+DESCRIPTION: Explaining how we go from org to html
 #+KEYWORDS:
-#+LATEX_HEADER:
 
 * Intentions
 We would like to be able to turn our org-modes into visually appealing web pages.
@@ -149,6 +148,7 @@ That is out of scope for this post though.
     color: var(--primary_color);
     font-family: var(--primary_font);
     font-size: var(--font-size);
+    font-weight: 300;
   }
 
   div#content {
