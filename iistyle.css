@@ -1,0 +1,15 @@
+/*
+ii styling for orgs exported to html!
+*/
+
+body, html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: aliceblue;
+  color: indigo;
+  font-family: 'Fira Sans', sans-serif;
+}
