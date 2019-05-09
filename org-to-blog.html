@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-05-09 Thu 15:29 -->
+<!-- 2019-05-09 Thu 15:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org to Blogpost</title>
@@ -238,48 +238,48 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org297c4d0">1. Intentions</a></li>
-<li><a href="#orgbd98e32">2. Methods</a>
+<li><a href="#orgebfd481">1. Intentions</a></li>
+<li><a href="#orgcbc4541">2. Methods</a>
 <ul>
-<li><a href="#org3826cb4">2.1. org-dispatch-to-html</a></li>
-<li><a href="#orgdeacf89">2.2. Pandoc</a></li>
-<li><a href="#org24e0aad">2.3. Reveal.JS</a></li>
+<li><a href="#org1581dc6">2.1. org-dispatch-to-html</a></li>
+<li><a href="#org1bb0fdb">2.2. Pandoc</a></li>
+<li><a href="#org314e0fa">2.3. Reveal.JS</a></li>
 </ul>
 </li>
-<li><a href="#org3e91492">3. Flow and Assumptions</a></li>
-<li><a href="#org49f35a8">4. Goals for the Web template</a>
+<li><a href="#orge80cd32">3. Flow and Assumptions</a></li>
+<li><a href="#org397265f">4. Goals for the Web template</a>
 <ul>
-<li><a href="#org7746f80">4.1. <span class="done DONE">DONE</span> Export includes custom CSS, so it is a nice font and bg-color</a></li>
-<li><a href="#org36bd42b">4.2. <span class="done DONE">DONE</span> code blocks are presented nicely withikn the file</a></li>
-<li><a href="#orgb0481d9">4.3. <span class="done DONE">DONE</span> todos show up nikcely in the file</a></li>
-<li><a href="#org59d3784">4.4. <span class="todo TODO">TODO</span> ability to explicitly set the output folder and file.</a></li>
-<li><a href="#org055846f">4.5. <span class="todo TODO">TODO</span> Table of Contents is in a sidebar (similar to hackMD)</a></li>
-<li><a href="#orgc9c872d">4.6. <span class="todo TODO">TODO</span> internal links work (the various subheadings, or linking a line in a doc.)</a></li>
-<li><a href="#org46fdc27">4.7. <span class="todo TODO">TODO</span> A template is made that we can load during the export that includes link to custom css</a></li>
+<li><a href="#org36f0bbb">4.1. <span class="done DONE">DONE</span> Export includes custom CSS, so it is a nice font and bg-color</a></li>
+<li><a href="#orgd64b971">4.2. <span class="done DONE">DONE</span> code blocks are presented nicely withikn the file</a></li>
+<li><a href="#orgc039171">4.3. <span class="done DONE">DONE</span> todos show up nikcely in the file</a></li>
+<li><a href="#orgdb0a150">4.4. <span class="todo TODO">TODO</span> ability to explicitly set the output folder and file.</a></li>
+<li><a href="#org7f9ec79">4.5. <span class="todo TODO">TODO</span> Table of Contents is in a sidebar (similar to hackMD)</a></li>
+<li><a href="#orgbb1b281">4.6. <span class="todo TODO">TODO</span> internal links work (the various subheadings, or linking a line in a doc.)</a></li>
+<li><a href="#org8d825e6">4.7. <span class="todo TODO">TODO</span> A template is made that we can load during the export that includes link to custom css</a></li>
 </ul>
 </li>
-<li><a href="#org2320827">5. Sample Work</a>
+<li><a href="#org708cba7">5. Sample Work</a>
 <ul>
-<li><a href="#orgbc04c06">5.1. Heading 2!</a>
+<li><a href="#org1d11373">5.1. Heading 2!</a>
 <ul>
-<li><a href="#orgb9b9253">5.1.1. Heading 3!</a></li>
+<li><a href="#orgf876aff">5.1.1. Heading 3!</a></li>
 </ul>
 </li>
-<li><a href="#orgd6b4896">5.2. <span class="todo TODO">TODO</span> A thing</a></li>
-<li><a href="#orgf3738b5">5.3. <span class="done DONE">DONE</span> another thing</a></li>
-<li><a href="#org2f32087">5.4. <span class="todo TODO">TODO</span> a scheduled thing</a></li>
-<li><a href="#org923f406">5.5. Source code blocks</a></li>
-<li><a href="#orgc677674">5.6. A Nice Table</a></li>
+<li><a href="#org8a20fa1">5.2. <span class="todo TODO">TODO</span> A thing</a></li>
+<li><a href="#org819aaf1">5.3. <span class="done DONE">DONE</span> another thing</a></li>
+<li><a href="#orgbf09888">5.4. <span class="todo TODO">TODO</span> a scheduled thing</a></li>
+<li><a href="#orga5c3acb">5.5. Source code blocks</a></li>
+<li><a href="#org6b2d26c">5.6. A Nice Table</a></li>
 </ul>
 </li>
-<li><a href="#orgd38fe5c">6. Working with org-dispatch</a></li>
-<li><a href="#org1446b8c">7. Our iistyle</a></li>
+<li><a href="#org7d49d1b">6. Working with org-dispatch</a></li>
+<li><a href="#orgf48ac7a">7. Our iistyle</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org297c4d0" class="outline-2">
-<h2 id="org297c4d0"><span class="section-number-2">1</span> Intentions</h2>
+<div id="outline-container-orgebfd481" class="outline-2">
+<h2 id="orgebfd481"><span class="section-number-2">1</span> Intentions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 We would like to be able to turn our org-modes into visually appealing web pages.
@@ -287,15 +287,15 @@ This org-file is a meta-journey to do this, where hopefully you are reading it o
 </p>
 </div>
 </div>
-<div id="outline-container-orgbd98e32" class="outline-2">
-<h2 id="orgbd98e32"><span class="section-number-2">2</span> Methods</h2>
+<div id="outline-container-orgcbc4541" class="outline-2">
+<h2 id="orgcbc4541"><span class="section-number-2">2</span> Methods</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 There are  few known methods for converting an org file into html
 </p>
 </div>
-<div id="outline-container-org3826cb4" class="outline-3">
-<h3 id="org3826cb4"><span class="section-number-3">2.1</span> org-dispatch-to-html</h3>
+<div id="outline-container-org1581dc6" class="outline-3">
+<h3 id="org1581dc6"><span class="section-number-3">2.1</span> org-dispatch-to-html</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 This can be accessed through  <a href="https://orgmode.org/manual/The-export-dispatcher.html">org-export-dispatch</a> , reached with <code>,ee</code>
@@ -312,8 +312,8 @@ This is the best option for us, as we do not need to learn a new language, has g
 </p>
 </div>
 </div>
-<div id="outline-container-orgdeacf89" class="outline-3">
-<h3 id="orgdeacf89"><span class="section-number-3">2.2</span> Pandoc</h3>
+<div id="outline-container-org1bb0fdb" class="outline-3">
+<h3 id="org1bb0fdb"><span class="section-number-3">2.2</span> Pandoc</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Pandoc is a tool for conversion, that has its own language and style.  It is part of <code>org-export-dispatch</code>, but can also be included as a spacemacs layer, so you can customize and run pandoc explicitly.
@@ -324,8 +324,8 @@ This tool can be v. esoteric, and it is a Domain Specific Language, and so I thi
 </p>
 </div>
 </div>
-<div id="outline-container-org24e0aad" class="outline-3">
-<h3 id="org24e0aad"><span class="section-number-3">2.3</span> Reveal.JS</h3>
+<div id="outline-container-org314e0fa" class="outline-3">
+<h3 id="org314e0fa"><span class="section-number-3">2.3</span> Reveal.JS</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Reveal is a library for creating slide presentations and slide-style interactive websites.  It has a nice, professional style by default, but it is not meant for long posts. It's good for an org-file made of keywords and snippets, but not one written with a blog audience in mind.  This is a good thing to explore later, but not for the present purpose.
@@ -333,8 +333,8 @@ Reveal is a library for creating slide presentations and slide-style interactive
 </div>
 </div>
 </div>
-<div id="outline-container-org3e91492" class="outline-2">
-<h2 id="org3e91492"><span class="section-number-2">3</span> Flow and Assumptions</h2>
+<div id="outline-container-orge80cd32" class="outline-2">
+<h2 id="orge80cd32"><span class="section-number-2">3</span> Flow and Assumptions</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 I am trying out an export for a basic static website, where each org-file becomes its own html page, within a folder called <code>org</code> (knowing we can change the folder later).  This means the site will need to have an index, leading to the different selections, but would need to be built separately (and likely could be done with a simple script, and not as a part of org).
@@ -350,12 +350,12 @@ That is out of scope for this post though.
 </div>
 </div>
 
-<div id="outline-container-org49f35a8" class="outline-2">
-<h2 id="org49f35a8"><span class="section-number-2">4</span> Goals for the Web template</h2>
+<div id="outline-container-org397265f" class="outline-2">
+<h2 id="org397265f"><span class="section-number-2">4</span> Goals for the Web template</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org7746f80" class="outline-3">
-<h3 id="org7746f80"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Export includes custom CSS, so it is a nice font and bg-color</h3>
+<div id="outline-container-org36f0bbb" class="outline-3">
+<h3 id="org36f0bbb"><span class="section-number-3">4.1</span> <span class="done DONE">DONE</span> Export includes custom CSS, so it is a nice font and bg-color</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 You can do this by adding a link to your stylesheet with <code>#+HTML_HEAD</code>
@@ -375,55 +375,59 @@ This enables us to override their styling by redefining their classes.  See <a h
 </p>
 </div>
 </div>
-<div id="outline-container-org36bd42b" class="outline-3">
-<h3 id="org36bd42b"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> code blocks are presented nicely withikn the file</h3>
+<div id="outline-container-orgd64b971" class="outline-3">
+<h3 id="orgd64b971"><span class="section-number-3">4.2</span> <span class="done DONE">DONE</span> code blocks are presented nicely withikn the file</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 This is done automatically by their export, and I like the style they ahve for it.  The most I'd do, right now, is make the background nearblack instead of transparent.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb0481d9" class="outline-3">
-<h3 id="orgb0481d9"><span class="section-number-3">4.3</span> <span class="done DONE">DONE</span> todos show up nikcely in the file</h3>
+<div id="outline-container-orgc039171" class="outline-3">
+<h3 id="orgc039171"><span class="section-number-3">4.3</span> <span class="done DONE">DONE</span> todos show up nikcely in the file</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
 comes pre-styled with export.  We can adjust the color and look if we'd like though.
 </p>
 </div>
 </div>
-<div id="outline-container-org59d3784" class="outline-3">
-<h3 id="org59d3784"><span class="section-number-3">4.4</span> <span class="todo TODO">TODO</span> ability to explicitly set the output folder and file.</h3>
+<div id="outline-container-orgdb0a150" class="outline-3">
+<h3 id="orgdb0a150"><span class="section-number-3">4.4</span> <span class="todo TODO">TODO</span> ability to explicitly set the output folder and file.</h3>
 </div>
-<div id="outline-container-org055846f" class="outline-3">
-<h3 id="org055846f"><span class="section-number-3">4.5</span> <span class="todo TODO">TODO</span> Table of Contents is in a sidebar (similar to hackMD)</h3>
+<div id="outline-container-org7f9ec79" class="outline-3">
+<h3 id="org7f9ec79"><span class="section-number-3">4.5</span> <span class="todo TODO">TODO</span> Table of Contents is in a sidebar (similar to hackMD)</h3>
 </div>
-<div id="outline-container-orgc9c872d" class="outline-3">
-<h3 id="orgc9c872d"><span class="section-number-3">4.6</span> <span class="todo TODO">TODO</span> internal links work (the various subheadings, or linking a line in a doc.)</h3>
+<div id="outline-container-orgbb1b281" class="outline-3">
+<h3 id="orgbb1b281"><span class="section-number-3">4.6</span> <span class="todo TODO">TODO</span> internal links work (the various subheadings, or linking a line in a doc.)</h3>
 </div>
-<div id="outline-container-org46fdc27" class="outline-3">
-<h3 id="org46fdc27"><span class="section-number-3">4.7</span> <span class="todo TODO">TODO</span> A template is made that we can load during the export that includes link to custom css</h3>
+<div id="outline-container-org8d825e6" class="outline-3">
+<h3 id="org8d825e6"><span class="section-number-3">4.7</span> <span class="todo TODO">TODO</span> A template is made that we can load during the export that includes link to custom css</h3>
 <div class="outline-text-3" id="text-4-7">
 <p>
 This could be done two ways.  One is to set some globaal variables so when we add a template they come built in.
 The other is to include a property for our setup file.  This could be included in the footnotes&#x2026;and i kinda like it because we are then just working on the set org-mode ii style and maintain that&#x2026;and all our org's export the same.
 </p>
+
+<p>
+See this superuser question: <a href="https://superuser.com/questions/444105/how-to-define-template-for-org-mode-html-export">https://superuser.com/questions/444105/how-to-define-template-for-org-mode-html-export</a>
+</p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2320827" class="outline-2">
-<h2 id="org2320827"><span class="section-number-2">5</span> Sample Work</h2>
+<div id="outline-container-org708cba7" class="outline-2">
+<h2 id="org708cba7"><span class="section-number-2">5</span> Sample Work</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-orgbc04c06" class="outline-3">
-<h3 id="orgbc04c06"><span class="section-number-3">5.1</span> Heading 2!</h3>
+<div id="outline-container-org1d11373" class="outline-3">
+<h3 id="org1d11373"><span class="section-number-3">5.1</span> Heading 2!</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Some words
 </p>
 </div>
-<div id="outline-container-orgb9b9253" class="outline-4">
-<h4 id="orgb9b9253"><span class="section-number-4">5.1.1</span> Heading 3!</h4>
+<div id="outline-container-orgf876aff" class="outline-4">
+<h4 id="orgf876aff"><span class="section-number-4">5.1.1</span> Heading 3!</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 more words!!!  <b>Bold words</b> and <i>italicized</i> and <code>code blocks of stuff</code>.
@@ -431,24 +435,24 @@ more words!!!  <b>Bold words</b> and <i>italicized</i> and <code>code blocks of 
 </div>
 </div>
 </div>
-<div id="outline-container-orgd6b4896" class="outline-3">
-<h3 id="orgd6b4896"><span class="section-number-3">5.2</span> <span class="todo TODO">TODO</span> A thing</h3>
+<div id="outline-container-org8a20fa1" class="outline-3">
+<h3 id="org8a20fa1"><span class="section-number-3">5.2</span> <span class="todo TODO">TODO</span> A thing</h3>
 </div>
-<div id="outline-container-orgf3738b5" class="outline-3">
-<h3 id="orgf3738b5"><span class="section-number-3">5.3</span> <span class="done DONE">DONE</span> another thing</h3>
+<div id="outline-container-org819aaf1" class="outline-3">
+<h3 id="org819aaf1"><span class="section-number-3">5.3</span> <span class="done DONE">DONE</span> another thing</h3>
 <div class="outline-text-3" id="text-5-3">
 </div>
 </div>
-<div id="outline-container-org2f32087" class="outline-3">
-<h3 id="org2f32087"><span class="section-number-3">5.4</span> <span class="todo TODO">TODO</span> a scheduled thing</h3>
+<div id="outline-container-orgbf09888" class="outline-3">
+<h3 id="orgbf09888"><span class="section-number-3">5.4</span> <span class="todo TODO">TODO</span> a scheduled thing</h3>
 <div class="outline-text-3" id="text-5-4">
 </div>
 </div>
-<div id="outline-container-org923f406" class="outline-3">
-<h3 id="org923f406"><span class="section-number-3">5.5</span> Source code blocks</h3>
+<div id="outline-container-orga5c3acb" class="outline-3">
+<h3 id="orga5c3acb"><span class="section-number-3">5.5</span> Source code blocks</h3>
 <div class="outline-text-3" id="text-5-5">
 <div class="org-src-container">
-<pre class="src src-shell" id="orge89a6eb"><span style="color: #268bd2;">pwd</span>
+<pre class="src src-shell" id="org800ae09"><span style="color: #268bd2;">pwd</span>
 <span style="color: #268bd2;">echo</span> <span style="color: #2aa198;">"I am Cool!"</span> 
 </pre>
 </div>
@@ -464,7 +468,7 @@ And here is some javascript!
 </p>
 
 <div class="org-src-container">
-<pre class="src src-js" id="orgd28cf14">function selfAffirmation <span style="color: #268bd2;">(</span>self<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
+<pre class="src src-js" id="org5a5dabc">function selfAffirmation <span style="color: #268bd2;">(</span>self<span style="color: #268bd2;">)</span> <span style="color: #268bd2;">{</span>
   let selfAffirmation = `I, ${self} am great.  And I, ${self} am powerful!`
   console.log<span style="color: #d75fd7;">(</span>selfAffirmation<span style="color: #d75fd7;">)</span>
 <span style="color: #268bd2;">}</span>
@@ -486,8 +490,8 @@ undefined
 </div>
 </div>
 
-<div id="outline-container-orgc677674" class="outline-3">
-<h3 id="orgc677674"><span class="section-number-3">5.6</span> A Nice Table</h3>
+<div id="outline-container-org6b2d26c" class="outline-3">
+<h3 id="org6b2d26c"><span class="section-number-3">5.6</span> A Nice Table</h3>
 <div class="outline-text-3" id="text-5-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -534,8 +538,8 @@ undefined
 </div>
 </div>
 
-<div id="outline-container-orgd38fe5c" class="outline-2">
-<h2 id="orgd38fe5c"><span class="section-number-2">6</span> Working with org-dispatch</h2>
+<div id="outline-container-org7d49d1b" class="outline-2">
+<h2 id="org7d49d1b"><span class="section-number-2">6</span> Working with org-dispatch</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 This file has a built-in styling for TODO's and code blocks.  The name of the block is not included.  It also doesn't seem to do the results
@@ -549,8 +553,8 @@ We could also set up an html template that we prepend to the org mode upon being
 </div>
 
 
-<div id="outline-container-org1446b8c" class="outline-2">
-<h2 id="org1446b8c"><span class="section-number-2">7</span> Our iistyle</h2>
+<div id="outline-container-orgf48ac7a" class="outline-2">
+<h2 id="orgf48ac7a"><span class="section-number-2">7</span> Our iistyle</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 This is the CSS sheet we reference to style our pages.
@@ -597,7 +601,7 @@ This is the CSS sheet we reference to style our pages.
 <div id="postamble" class="status">
 <p class="date">Date: 2019-05-09</p>
 <p class="author">Author: Zach Mandeville</p>
-<p class="date">Created: 2019-05-09 Thu 15:29</p>
+<p class="date">Created: 2019-05-09 Thu 15:30</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

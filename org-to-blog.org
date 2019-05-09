@@ -62,6 +62,8 @@ That is out of scope for this post though.
 ** TODO A template is made that we can load during the export that includes link to custom css
    This could be done two ways.  One is to set some globaal variables so when we add a template they come built in.
    The other is to include a property for our setup file.  This could be included in the footnotes...and i kinda like it because we are then just working on the set org-mode ii style and maintain that...and all our org's export the same.
+   
+   See this superuser question: https://superuser.com/questions/444105/how-to-define-template-for-org-mode-html-export
 
 * Sample Work
 ** Heading 2!
