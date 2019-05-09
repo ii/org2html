@@ -53,18 +53,21 @@ That is out of scope for this post though.
    CLOSED: [2019-05-09 Thu 14:35]
    
    This is done automatically by their export, and I like the style they ahve for it.  The most I'd do, right now, is make the background nearblack instead of transparent.
-** TODO todos show up nikcely in the file
+** DONE todos show up nikcely in the file
+   CLOSED: [2019-05-09 Thu 15:26]
+   comes pre-styled with export.  We can adjust the color and look if we'd like though.
 ** TODO ability to explicitly set the output folder and file.
 ** TODO Table of Contents is in a sidebar (similar to hackMD)
 ** TODO internal links work (the various subheadings, or linking a line in a doc.)
 ** TODO A template is made that we can load during the export that includes link to custom css
+   This could be done two ways.  One is to set some globaal variables so when we add a template they come built in.
+   The other is to include a property for our setup file.  This could be included in the footnotes...and i kinda like it because we are then just working on the set org-mode ii style and maintain that...and all our org's export the same.
+
 * Sample Work
 ** Heading 2!
+   Some words
 *** Heading 3!
-** TODO Figure out how to export result code blocks
-** TODO figure out how to insert custom css 
-** TODO add custom css to some file we can reach over ionternet  (netlify?)
-** TODO figure out how to make your own template that includes css
+    more words!!!  *Bold words* and /italicized/ and =code blocks of stuff=.
 ** TODO A thing
 ** DONE another thing
    CLOSED: [2019-05-09 Thu 10:34]
@@ -103,7 +106,6 @@ That is out of scope for this post though.
    #+RESULTS: Javascript goodness :results output list :exports both
    : I, Zach am great.  And I, Zach am powerful!
    : undefined
-
 
 ** A Nice Table
    
