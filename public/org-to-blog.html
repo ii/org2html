@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-05-10 Fri 15:45 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org to Blogpost Sitemap</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Zach Mandeville" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="aesthetic/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700" rel="stylesheet">
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Org to Blogpost Sitemap</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge1989ee">1. Intentions</a>
+<ul>
+<li><a href="#org15a7394">1.1. Flow and Assumptions</a></li>
+</ul>
+</li>
+<li><a href="#org7ed217e">2. Methods</a>
+<ul>
+<li><a href="#orgdb8194e">2.1. Other Options</a>
+<ul>
+<li><a href="#orgefc0a9c">2.1.1. org-dispatch-to-html</a></li>
+<li><a href="#org0124cf2">2.1.2. Pandoc</a></li>
+<li><a href="#orgd2addb5">2.1.3. Reveal.JS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8ab8431">3. Linking between files</a></li>
+<li><a href="#org33ec8ff">4. Including Images.</a></li>
+<li><a href="#org0acf23a">5. Our org-template setup (~.emacs.d/org-templates).</a></li>
+<li><a href="#orgd2c66e2">6. Our Export function</a></li>
+<li><a href="#org21774f9">7. Our Project Structure</a></li>
+<li><a href="#org7b2b5b0">8. The Sitemap</a></li>
+<li><a href="#orgf888a54">9. Sample Work</a>
+<ul>
+<li><a href="#orge1cdf6c">9.1. Heading 2!</a>
+<ul>
+<li><a href="#org501b273">9.1.1. Heading 3!</a></li>
+</ul>
+</li>
+<li><a href="#orge7af10d">9.2. <span class="todo TODO">TODO</span> A thing</a></li>
+<li><a href="#org92ee5a8">9.3. <span class="done DONE">DONE</span> another thing</a></li>
+<li><a href="#org08f131d">9.4. <span class="todo TODO">TODO</span> a scheduled thing</a></li>
+<li><a href="#org1f2c638">9.5. Source code blocks</a></li>
+<li><a href="#orgc7e2e2f">9.6. A Nice Table</a></li>
+</ul>
+</li>
+<li><a href="#org8e2feb1">10. Our iistyle</a></li>
+<li><a href="#orgb56cf74">11. Goals for the Web template</a>
+<ul>
+<li><a href="#org9ab814c">11.1. <span class="todo TODO">TODO</span> Table of Contents is in a sidebar (similar to hackMD)</a></li>
+<li><a href="#orgb6ee6bc">11.2. <span class="todo TODO">TODO</span> internal links work (the various subheadings, or linking a line in a doc.)</a></li>
+<li><a href="#org124f480">11.3. <span class="todo TODO">TODO</span> Our org files follow structure for ox-publish-to-html</a></li>
+<li><a href="#org84bb615">11.4. <span class="todo TODO">TODO</span> Create</a></li>
+<li><a href="#org6df94cc">11.5. <span class="done DONE">DONE</span> Export includes custom CSS, so it is a nice font and bg-color</a></li>
+<li><a href="#org4947977">11.6. <span class="done DONE">DONE</span> code blocks are presented nicely withikn the file</a></li>
+<li><a href="#orgbe9b8d3">11.7. <span class="done DONE">DONE</span> todos show up nikcely in the file</a></li>
+</ul>
+</li>
+<li><a href="#orgb34a3d3">12. Links</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge1989ee" class="outline-2">
+<h2 id="orge1989ee"><span class="section-number-2">1</span> Intentions</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+We would like to be able to turn our org-modes into visually appealing web pages.
+This org-file is a meta-journey to do this, where hopefully you are reading it online, through a beautiful website.
+</p>
+</div>
+<div id="outline-container-org15a7394" class="outline-3">
+<h3 id="org15a7394"><span class="section-number-3">1.1</span> Flow and Assumptions</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+I am trying out an export for a basic static website, where each org-file becomes its own html page, within a folder called <code>org</code> (knowing we can change the folder later).  This means the site will need to have an index, leading to the different selections, but would need to be built separately (and likely could be done with a simple script, and not as a part of org).
+</p>
+
+<p>
+If we decide we want this to be a blog, and maybe part of our wordpress site, we would need to revisit this flow to make something easy enough for wordpress to consume. I am not quite sure our setup on that (whether wordpress wants markdown entered into their CMS, or whether we could post to a file and wordpress knows to grab everything from that.)
+</p>
+
+<p>
+That is out of scope for this post though.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7ed217e" class="outline-2">
+<h2 id="org7ed217e"><span class="section-number-2">2</span> Methods</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+There are  few known methods for converting an org file into html.   We can either use <code>org-export-dispatch</code> (<code>,ee</code>) and choose the output we&rsquo;d like to export our single file to, OR we can use the  tool <code>org-publish-project</code> (<code>spc spc org-publish-project</code>), which publishes the entire repo and all its subfolders to our chosen output folder.  This latter option seems the best, and it&rsquo;s customization setup is near identical to if we org-export-dispatched an html export. 
+ This is also the way outlined in <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">publish org-mode to html</a>, which is the tutorial used throughout to setup this page.
+</p>
+</div>
+<div id="outline-container-orgdb8194e" class="outline-3">
+<h3 id="orgdb8194e"><span class="section-number-3">2.1</span> Other Options</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-orgefc0a9c" class="outline-4">
+<h4 id="orgefc0a9c"><span class="section-number-4">2.1.1</span> org-dispatch-to-html</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+This can be accessed through  <a href="https://orgmode.org/manual/The-export-dispatcher.html">org-export-dispatch</a> , reached with <code>,ee</code>
+From here you&rsquo;d select the HTML option, and can  save it as a file: <code>hh</code>
+This option can be customized, and it&rsquo;s by making adjustments to the org-file, with the #+KEYWORD style we are already used to.
+</p>
+
+<p>
+Org dispatch has a number of output options beyond html, including pandoc, pdf and markdown set for different programs like Hugo or Reveal.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0124cf2" class="outline-4">
+<h4 id="org0124cf2"><span class="section-number-4">2.1.2</span> Pandoc</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<p>
+Pandoc is a tool for conversion, that has its own language and style.  It is part of <code>org-export-dispatch</code>, but can also be included as a spacemacs layer, so you can customize and run pandoc explicitly.
+</p>
+
+<p>
+This tool can be v. esoteric, and it is a Domain Specific Language, and so I think it is better to invest time into making the basic org-dispatch work then trying to understand pandoc and <span class="underline">then</span> understand how org works with it.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd2addb5" class="outline-4">
+<h4 id="orgd2addb5"><span class="section-number-4">2.1.3</span> Reveal.JS</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+Reveal is a library for creating slide presentations and slide-style interactive websites.  It has a nice, professional style by default, but it is not meant for long posts. It&rsquo;s good for an org-file made of keywords and snippets, but not one written with a blog audience in mind.  This is a good thing to explore later, but not for the present purpose.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8ab8431" class="outline-2">
+<h2 id="org8ab8431"><span class="section-number-2">3</span> Linking between files</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+using ox-publish, it will export the whole directory, meaning we can link between orgs with relative links.  Let&rsquo;s check out our <a href="aesthetic.html">aesthetic</a>.  we added this file with the following syntax.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp" id="orgc699ac1"><span style="color: #657b83;">[</span><span style="color: #2aa198;">[</span>file:aesthetic.org<span style="color: #2aa198;">][</span>aesthetic<span style="color: #2aa198;">]</span><span style="color: #657b83;">]</span> 
+</pre>
+</div>
+
+<p>
+NOTE: the  file: marker does a relative path.  When we export our project, it&rsquo;ll copy all the files and folders to our chosen html file, which means these file links just become a hrefs following the same relative path.
+</p>
+</div>
+</div>
+<div id="outline-container-org33ec8ff" class="outline-2">
+<h2 id="org33ec8ff"><span class="section-number-2">4</span> Including Images.</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+We can also store images in an assets folder and reference them directly with the same <code>[\[file:image.png][image name]]</code> syntax.
+<a href="assets/ii_gitlab_running.png">ii gitlab running</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org0acf23a" class="outline-2">
+<h2 id="org0acf23a"><span class="section-number-2">5</span> Our org-template setup (~.emacs.d/org-templates).</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+We are able to setup our export using a template file that we reference at the top of each of our org files.  This file is essentially prepended to the top of the org file before the export, and so any #PROPERTY tags you would add manually can be added here, and it&rsquo;d apply to any org file with the same #+SETUPFILE header.
+</p>
+
+<p>
+Our template file is set to:
+</p>
+<ul class="org-ul">
+<li>use the CSS located in our <code>aesthetic</code> folder</li>
+<li>bring in the Fira Sans font from google (we could reference it locally, or store it on our own servers though.)</li>
+<li>make sure that none of the code blocks eval upon export.</li>
+<li>Make sure that our code blocks export both the block and their last evaluated result.</li>
+</ul>
+
+<p>
+It looks like this
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp" id="org683a11a">#+PROPERTY: header-args <span style="color: #6c71c4;">:eval</span> never-export
+#+PROPERTY: header-args:shell <span style="color: #6c71c4;">:eval</span> never-export <span style="color: #6c71c4;">:results</span> output verbatim replace drawer <span style="color: #6c71c4;">:exports</span> both
+#+OPTIONS: '<span style="color: #6c71c4;">:t</span> *:t -:t <span style="color: #6c71c4;">::t</span> &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil
+#+OPTIONS: creator:comment d:<span style="color: #657b83;">(</span>not LOGBOOK<span style="color: #657b83;">)</span> date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil stat:t tags:t tasks:t tex:t timestamp:t toc:t
+#+OPTIONS: todo:t |:t
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+#+OPTIONS: html-postamble:auto html-preamble:t tex:t
+#+CREATOR: &lt;a href='https://ii.coop'&gt;The people of ii&lt;/a&gt; 
+#+HTML_CONTAINER: div
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_HEAD: &lt;link rel=<span style="color: #2aa198;">"stylesheet"</span> type=<span style="color: #2aa198;">"text/css"</span> href=<span style="color: #2aa198;">"aesthetic/main.css"</span> /&gt;
+#+HTML_HEAD_EXTRA: &lt;link href=<span style="color: #2aa198;">"https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700"</span> rel=<span style="color: #2aa198;">"stylesheet"</span>&gt;
+#+HTML_HTML5_FANCY:
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+INFOJS_OPT:
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd2c66e2" class="outline-2">
+<h2 id="orgd2c66e2"><span class="section-number-2">6</span> Our Export function</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+From the tutorial, we wrote a function in our scratch buffer, then executed it with <code>C-x C-e</code>.  This is what enabled us to call org-publish with our specific setup and components. 
+</p>
+
+<p>
+This is the function
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp" id="org547322f"><span style="color: #657b83;">(</span><span style="color: #859900;">require</span> '<span style="color: #268bd2;">ox-publish</span><span style="color: #657b83;">)</span>
+<span style="color: #657b83;">(</span><span style="color: #859900;">setq</span> org-publish-project-alist
+      '<span style="color: #2aa198;">(</span>
+        <span style="color: #b58900;">(</span><span style="color: #2aa198;">"org-notes"</span>
+         <span style="color: #6c71c4;">:base-directory</span> <span style="color: #2aa198;">"~/ii/tooling/org2html/orgs/"</span>
+         <span style="color: #6c71c4;">:base-extension</span> <span style="color: #2aa198;">"org"</span>
+         <span style="color: #6c71c4;">:publishing-directory</span> <span style="color: #2aa198;">"~/ii/tooling/org2html/public/"</span>
+         <span style="color: #6c71c4;">:recursive</span> t
+         <span style="color: #6c71c4;">:publishing-function</span> org-html-publish-to-html
+         <span style="color: #6c71c4;">:headline-levels</span> <span style="color: #268bd2;">4</span> <span style="color: #93a1a1; font-style: italic;">; </span><span style="color: #93a1a1; font-style: italic;">Just the default for this project.</span>
+         <span style="color: #6c71c4;">:auto-preamble</span> t
+         <span style="color: #b58900;">)</span>
+        <span style="color: #b58900;">(</span><span style="color: #2aa198;">"org-static"</span>
+         <span style="color: #6c71c4;">:base-directory</span> <span style="color: #2aa198;">"~/ii/tooling/org2html/orgs/"</span>
+         <span style="color: #6c71c4;">:base-extension</span> <span style="color: #2aa198;">"css</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">js</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">png</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">jpg</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">gif</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">pdf</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">mp3</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">ogg</span><span style="color: #6c71c4;">\\</span><span style="color: #d33682;">|</span><span style="color: #2aa198;">swf"</span>
+         <span style="color: #6c71c4;">:publishing-directory</span> <span style="color: #2aa198;">"~/ii/tooling/org2html/public/"</span>
+         <span style="color: #6c71c4;">:recursive</span> t
+         <span style="color: #6c71c4;">:publishing-function</span> org-publish-attachment
+         <span style="color: #b58900;">)</span>
+        <span style="color: #b58900;">(</span><span style="color: #2aa198;">"org"</span> <span style="color: #6c71c4;">:components</span> <span style="color: #859900;">(</span><span style="color: #2aa198;">"org-notes"</span> <span style="color: #2aa198;">"org-static"</span><span style="color: #859900;">)</span><span style="color: #b58900;">)</span>
+        <span style="color: #2aa198;">)</span><span style="color: #657b83;">)</span>
+</pre>
+</div>
+
+<p>
+Of note is the <code>:base-directory</code> for notes and static, and the <code>output</code> folder.  No matter where I run <code>org-publish</code> it will export the files that are in the base directory.  So this works well for us having one big repo of all org files.
+</p>
+
+
+<p>
+There are two main components to the function, <code>org-notes</code> and <code>org-static</code>.  Notes takes anything within our base directory with our base extention and turns them into html.  org-static takes any files,a nd their folders, from the base directory that have any of our extensions, and brings them over whole-cloth to our publishing directory.  
+</p>
+
+<p>
+The final bottom component gives the name of this publishing template and everything it should include, so if we want to have different publishing projects with different setups, we could just append it to this <code>org-publish-project-alist</code>  This is made easier with the <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html#orge3dcdf4">inherit component</a> 
+</p>
+</div>
+</div>
+<div id="outline-container-org21774f9" class="outline-2">
+<h2 id="org21774f9"><span class="section-number-2">7</span> Our Project Structure</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+For our grand export, we want to store everything (css, images, and org files) within the orgs directory.  This sample one ends up looking like so:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell" id="org1937462">tree
+</pre>
+</div>
+
+<pre class="example">
+- .
+- ├── aesthetic
+- │   └── main.css
+- ├── aesthetic.org
+- ├── assets
+- │   └── ii_gitlab_running.png
+- ├── index.org
+- └── org-to-blog.org
+- 2 directories, 5 files
+
+</pre>
+</div>
+</div>
+<div id="outline-container-org7b2b5b0" class="outline-2">
+<h2 id="org7b2b5b0"><span class="section-number-2">8</span> The Sitemap</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+You can add the following lines to the &rsquo;notes&rsquo; component in <a href="#orgd2c66e2">Our Export function</a> to generate a sitemap of all org files.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp" id="org5738cb1"><span style="color: #93a1a1; font-style: italic;">;; </span><span style="color: #93a1a1; font-style: italic;">add to notes component</span>
+<span style="color: #6c71c4;">:auto-sitemap</span> t                <span style="color: #93a1a1; font-style: italic;">; </span><span style="color: #93a1a1; font-style: italic;">Generate sitemap.org automagically...</span>
+<span style="color: #6c71c4;">:sitemap-filename</span> <span style="color: #2aa198;">"sitemap.org"</span>  <span style="color: #93a1a1; font-style: italic;">; </span><span style="color: #93a1a1; font-style: italic;">... call it sitemap.org (it's the default)...</span>
+<span style="color: #6c71c4;">:sitemap-title</span> <span style="color: #2aa198;">"Sitemap"</span>         <span style="color: #93a1a1; font-style: italic;">; </span><span style="color: #93a1a1; font-style: italic;">... with title 'Sitemap'.</span>
+</pre>
+</div>
+
+<p>
+We can then include the contents of one org file inside another with <code>#+INCLUDE: filename.org</code> so we can <code>#+INCLUDE:sitemap.org</code> in any of our other files to generate a links section, or for the index.org to create the entire page essentch.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf888a54" class="outline-2">
+<h2 id="orgf888a54"><span class="section-number-2">9</span> Sample Work</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-orge1cdf6c" class="outline-3">
+<h3 id="orge1cdf6c"><span class="section-number-3">9.1</span> Heading 2!</h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Some words
+</p>
+</div>
+<div id="outline-container-org501b273" class="outline-4">
+<h4 id="org501b273"><span class="section-number-4">9.1.1</span> Heading 3!</h4>
+<div class="outline-text-4" id="text-9-1-1">
+<p>
+more words!!!  <b>Bold words</b> and <i>italicized</i> and <code>code blocks of stuff</code>.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge7af10d" class="outline-3">
+<h3 id="orge7af10d"><span class="section-number-3">9.2</span> <span class="todo TODO">TODO</span> A thing</h3>
+</div>
+<div id="outline-container-org92ee5a8" class="outline-3">
+<h3 id="org92ee5a8"><span class="section-number-3">9.3</span> <span class="done DONE">DONE</span> another thing</h3>
+<div class="outline-text-3" id="text-9-3">
+</div>
+</div>
+<div id="outline-container-org08f131d" class="outline-3">
+<h3 id="org08f131d"><span class="section-number-3">9.4</span> <span class="todo TODO">TODO</span> a scheduled thing</h3>
+<div class="outline-text-3" id="text-9-4">
+</div>
+</div>
+<div id="outline-container-org1f2c638" class="outline-3">
+<h3 id="org1f2c638"><span class="section-number-3">9.5</span> Source code blocks</h3>
+<div class="outline-text-3" id="text-9-5">
+<div class="org-src-container">
+<pre class="src src-shell" id="org358da15"><span style="color: #6c71c4;">pwd</span>
+<span style="color: #6c71c4;">echo</span> <span style="color: #2aa198;">"I am powerfull!"</span> 
+</pre>
+</div>
+
+<pre class="example">
+/home/zz/ii/tooling/group-tooling
+I am Cool!
+
+</pre>
+
+<p>
+And here is some javascript!
+</p>
+
+<div class="org-src-container">
+<pre class="src src-js" id="org033aa15">function selfAffirmation <span style="color: #657b83;">(</span>self<span style="color: #657b83;">)</span> <span style="color: #657b83;">{</span>
+  let selfAffirmation = `I, ${self} am great.  And I, ${self} am powerful!`
+  console.log<span style="color: #2aa198;">(</span>selfAffirmation<span style="color: #2aa198;">)</span>
+<span style="color: #657b83;">}</span>
+selfAffirmation<span style="color: #657b83;">(</span>'Zach'<span style="color: #657b83;">)</span>
+</pre>
+</div>
+
+<pre class="example">
+I, Zach am great.  And I, Zach am powerful!
+undefined
+
+</pre>
+
+<pre class="example">
+I, Zach am great.  And I, Zach am powerful!
+undefined
+
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc7e2e2f" class="outline-3">
+<h3 id="orgc7e2e2f"><span class="section-number-3">9.6</span> A Nice Table</h3>
+<div class="outline-text-3" id="text-9-6">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Thing</th>
+<th scope="col" class="org-left">Coolness</th>
+<th scope="col" class="org-left">location</th>
+<th scope="col" class="org-left">something</th>
+<th scope="col" class="org-left">else</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">chair</td>
+<td class="org-left">low</td>
+<td class="org-left">living room</td>
+<td class="org-left">box</td>
+<td class="org-left">sunset</td>
+</tr>
+
+<tr>
+<td class="org-left">video game</td>
+<td class="org-left">high</td>
+<td class="org-left">rec room</td>
+<td class="org-left">flower</td>
+<td class="org-left">plant</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8e2feb1" class="outline-2">
+<h2 id="org8e2feb1"><span class="section-number-2">10</span> Our iistyle</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+This is the CSS sheet we reference to style our pages.
+</p>
+<div class="org-src-container">
+<pre class="src src-css"><span style="color: #93a1a1; font-style: italic;">/*</span>
+<span style="color: #93a1a1; font-style: italic;">ii styling for orgs exported to html!</span>
+<span style="color: #93a1a1; font-style: italic;">*/</span>
+
+<span style="color: #93a1a1; font-style: italic;">/*</span>
+<span style="color: #93a1a1; font-style: italic;">let's use variables, to quickly change color and font later.</span>
+<span style="color: #93a1a1; font-style: italic;">*/</span>
+<span style="color: #b58900;">:root </span><span style="color: #657b83;">{</span>
+  <span style="color: #6c71c4;">--primary</span>_bg: <span style="color: #000000; background-color: #f0f8ff;">aliceblue</span>;
+  <span style="color: #6c71c4;">--primary</span>_color: <span style="color: #ffffff; background-color: #111111;">#111111</span>;
+  <span style="color: #6c71c4;">--primary</span>_font: <span style="color: #2aa198;">'Fira Sans'</span>, sans-serif;  <span style="color: #93a1a1; font-style: italic;">/* </span><span style="color: #93a1a1; font-style: italic;">currently requires dependency to google fonts, but this is an open source font.</span><span style="color: #93a1a1; font-style: italic;">*/</span>
+  <span style="color: #6c71c4;">--font-size</span>: <span style="color: #268bd2;">24px</span>;
+<span style="color: #657b83;">}</span>
+
+
+<span style="color: #b58900;">body, html </span><span style="color: #657b83;">{</span>
+  <span style="color: #859900;">padding</span>: <span style="color: #268bd2;">0</span>;
+  <span style="color: #859900;">margin</span>: <span style="color: #268bd2;">0</span>;
+  <span style="color: #859900;">box-sizing</span>: border-box;
+<span style="color: #657b83;">}</span>
+
+<span style="color: #b58900;">body </span><span style="color: #657b83;">{</span>
+  <span style="color: #859900;">background</span>: var<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">--primary</span>_bg<span style="color: #2aa198;">)</span>;
+  <span style="color: #859900;">color</span>: var<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">--primary</span>_color<span style="color: #2aa198;">)</span>;
+  <span style="color: #859900;">font-family</span>: var<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">--primary</span>_font<span style="color: #2aa198;">)</span>;
+  <span style="color: #859900;">font-size</span>: var<span style="color: #2aa198;">(</span><span style="color: #6c71c4;">--font-size</span><span style="color: #2aa198;">)</span>;
+  <span style="color: #859900;">font-weight</span>: <span style="color: #268bd2;">300</span>;
+<span style="color: #657b83;">}</span>
+
+<span style="color: #b58900;">div#content </span><span style="color: #657b83;">{</span>
+  <span style="color: #859900;">width</span>: <span style="color: #268bd2;">70</span>%;
+  <span style="color: #859900;">padding</span>: <span style="color: #268bd2;">3em</span>;
+<span style="color: #657b83;">}</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb56cf74" class="outline-2">
+<h2 id="orgb56cf74"><span class="section-number-2">11</span> Goals for the Web template</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org9ab814c" class="outline-3">
+<h3 id="org9ab814c"><span class="section-number-3">11.1</span> <span class="todo TODO">TODO</span> Table of Contents is in a sidebar (similar to hackMD)</h3>
+</div>
+<div id="outline-container-orgb6ee6bc" class="outline-3">
+<h3 id="orgb6ee6bc"><span class="section-number-3">11.2</span> <span class="todo TODO">TODO</span> internal links work (the various subheadings, or linking a line in a doc.)</h3>
+</div>
+<div id="outline-container-org124f480" class="outline-3">
+<h3 id="org124f480"><span class="section-number-3">11.3</span> <span class="todo TODO">TODO</span> Our org files follow structure for ox-publish-to-html</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+This means we follow the tutorial of <a href="https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html">publishing org-mode files to html</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org84bb615" class="outline-3">
+<h3 id="org84bb615"><span class="section-number-3">11.4</span> <span class="todo TODO">TODO</span> Create</h3>
+</div>
+<div id="outline-container-org6df94cc" class="outline-3">
+<h3 id="org6df94cc"><span class="section-number-3">11.5</span> <span class="done DONE">DONE</span> Export includes custom CSS, so it is a nice font and bg-color</h3>
+<div class="outline-text-3" id="text-11-5">
+<p>
+You can do this by adding a link to your stylesheet with <code>#+HTML_HEAD</code>
+</p>
+
+<pre class="example">
+#+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="https://iistyle.netlify.com/iistyle.css" /&gt;
+</pre>
+
+<p>
+We created a netlify page with a stylesheet, so we could reference it externally.
+This also keeps the existing styles that come with it, but our stylesheet is placed below the built-in styling, which means our tags have priority.   
+</p>
+
+<p>
+This enables us to override their styling by redefining their classes.  See <a href="https://orgmode.org/manual/CSS-support.html#CSS-support">The Org Manual Page on CSS Support</a> for more.
+</p>
+</div>
+</div>
+<div id="outline-container-org4947977" class="outline-3">
+<h3 id="org4947977"><span class="section-number-3">11.6</span> <span class="done DONE">DONE</span> code blocks are presented nicely withikn the file</h3>
+<div class="outline-text-3" id="text-11-6">
+<p>
+This is done automatically by their export, and I like the style they ahve for it.  The most I&rsquo;d do, right now, is make the background nearblack instead of transparent.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbe9b8d3" class="outline-3">
+<h3 id="orgbe9b8d3"><span class="section-number-3">11.7</span> <span class="done DONE">DONE</span> todos show up nikcely in the file</h3>
+<div class="outline-text-3" id="text-11-7">
+<p>
+comes pre-styled with export.  We can adjust the color and look if we&rsquo;d like though.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb34a3d3" class="outline-2">
+<h2 id="orgb34a3d3"><span class="section-number-2">12</span> Links</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><a href="aesthetic.html">Aesthetic</a></li>
+<li><a href="org-to-blog.html">Org to Blogpost</a></li>
+<li><a href="index.html">index</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2019-05-09</p>
+<p class="author">Author: Zach Mandeville</p>
+<p class="date">Created: 2019-05-10 Fri 15:45</p>
+<p class="creator"><a href='https://ii.coop'>The people of ii</a></p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

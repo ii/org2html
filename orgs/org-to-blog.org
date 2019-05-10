@@ -1,0 +1,262 @@
+#+SETUPFILE: ~/.emacs.d/org-templates/level-0.org
+#+PROPERTY: header-args :eval never-export
+#+TITLE: Org to Blogpost
+#+AUTHOR: Zach Mandeville
+#+DATE: 2019-05-09
+
+* Intentions
+We would like to be able to turn our org-modes into visually appealing web pages.
+This org-file is a meta-journey to do this, where hopefully you are reading it online, through a beautiful website.
+** Flow and Assumptions
+ I am trying out an export for a basic static website, where each org-file becomes its own html page, within a folder called =org= (knowing we can change the folder later).  This means the site will need to have an index, leading to the different selections, but would need to be built separately (and likely could be done with a simple script, and not as a part of org).
+
+ If we decide we want this to be a blog, and maybe part of our wordpress site, we would need to revisit this flow to make something easy enough for wordpress to consume. I am not quite sure our setup on that (whether wordpress wants markdown entered into their CMS, or whether we could post to a file and wordpress knows to grab everything from that.)
+
+ That is out of scope for this post though.
+
+* Methods
+  There are  few known methods for converting an org file into html.   We can either use =org-export-dispatch= (=,ee=) and choose the output we'd like to export our single file to, OR we can use the  tool =org-publish-project= (=spc spc org-publish-project=), which publishes the entire repo and all its subfolders to our chosen output folder.  This latter option seems the best, and it's customization setup is near identical to if we org-export-dispatched an html export. 
+   This is also the way outlined in [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][publish org-mode to html]], which is the tutorial used throughout to setup this page.
+** Other Options
+*** org-dispatch-to-html
+    This can be accessed through  [[https://orgmode.org/manual/The-export-dispatcher.html][org-export-dispatch]] , reached with =,ee=
+    From here you'd select the HTML option, and can  save it as a file: =hh=
+    This option can be customized, and it's by making adjustments to the org-file, with the #+KEYWORD style we are already used to.
+
+ Org dispatch has a number of output options beyond html, including pandoc, pdf and markdown set for different programs like Hugo or Reveal.
+   
+*** Pandoc
+    Pandoc is a tool for conversion, that has its own language and style.  It is part of =org-export-dispatch=, but can also be included as a spacemacs layer, so you can customize and run pandoc explicitly.
+
+ This tool can be v. esoteric, and it is a Domain Specific Language, and so I think it is better to invest time into making the basic org-dispatch work then trying to understand pandoc and _then_ understand how org works with it.
+*** Reveal.JS
+   Reveal is a library for creating slide presentations and slide-style interactive websites.  It has a nice, professional style by default, but it is not meant for long posts. It's good for an org-file made of keywords and snippets, but not one written with a blog audience in mind.  This is a good thing to explore later, but not for the present purpose.
+* Linking between files
+  using ox-publish, it will export the whole directory, meaning we can link between orgs with relative links.  Let's check out our [[file:aesthetic.org][aesthetic]].  we added this file with the following syntax.
+  
+  #+NAME: file link syntax
+  #+BEGIN_SRC elisp
+ [[file:aesthetic.org][aesthetic]] 
+  #+END_SRC
+  
+  NOTE: the  file: marker does a relative path.  When we export our project, it'll copy all the files and folders to our chosen html file, which means these file links just become a hrefs following the same relative path.
+* Including Images.
+  We can also store images in an assets folder and reference them directly with the same =[\[file:image.png][image name]]= syntax.
+  [[file:assets/ii_gitlab_running.png][ii gitlab running]]
+* Our org-template setup (~.emacs.d/org-templates).
+  We are able to setup our export using a template file that we reference at the top of each of our org files.  This file is essentially prepended to the top of the org file before the export, and so any #PROPERTY tags you would add manually can be added here, and it'd apply to any org file with the same #+SETUPFILE header.
+  
+  Our template file is set to:
+  - use the CSS located in our =aesthetic= folder
+  - bring in the Fira Sans font from google (we could reference it locally, or store it on our own servers though.)
+  - make sure that none of the code blocks eval upon export.
+  - Make sure that our code blocks export both the block and their last evaluated result.
+
+It looks like this
+
+#+NAME: level-0.org
+#+BEGIN_SRC elisp :tangle ~/.emacs.d/org-templates/level-0.org
+  ,#+PROPERTY: header-args :eval never-export
+  ,#+PROPERTY: header-args:shell :eval never-export :results output verbatim replace drawer :exports both
+  ,#+OPTIONS: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
+  ,#+OPTIONS: creator:comment d:(not LOGBOOK) date:t e:t email:nil f:t inline:t
+  ,#+OPTIONS: num:t p:nil pri:nil stat:t tags:t tasks:t tex:t timestamp:t toc:t
+  ,#+OPTIONS: todo:t |:t
+  ,#+EXCLUDE_TAGS: noexport
+  ,#+KEYWORDS:
+  ,#+LANGUAGE: en
+  ,#+SELECT_TAGS: export
+  ,#+OPTIONS: html-postamble:auto html-preamble:t tex:t
+  ,#+CREATOR: <a href='https://ii.coop'>The people of ii</a> 
+  ,#+HTML_CONTAINER: div
+  ,#+HTML_DOCTYPE: xhtml-strict
+  ,#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="aesthetic/main.css" />
+  ,#+HTML_HEAD_EXTRA: <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700" rel="stylesheet">
+  ,#+HTML_HTML5_FANCY:
+  ,#+HTML_LINK_HOME:
+  ,#+HTML_LINK_UP:
+  ,#+HTML_MATHJAX:
+  ,#+INFOJS_OPT:
+#+END_SRC
+
+* Our Export function
+From the tutorial, we wrote a function in our scratch buffer, then executed it with =C-x C-e=.  This is what enabled us to call org-publish with our specific setup and components. 
+
+This is the function
+#+NAME: org-publish function
+#+BEGIN_SRC elisp
+  (require 'ox-publish)
+  (setq org-publish-project-alist
+        '(
+          ("org-notes"
+           :base-directory "~/ii/tooling/org2html/orgs/"
+           :base-extension "org"
+           :publishing-directory "~/ii/tooling/org2html/public/"
+           :recursive t
+           :publishing-function org-html-publish-to-html
+           :headline-levels 4 ; Just the default for this project.
+           :auto-preamble t
+           )
+          ("org-static"
+           :base-directory "~/ii/tooling/org2html/orgs/"
+           :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+           :publishing-directory "~/ii/tooling/org2html/public/"
+           :recursive t
+           :publishing-function org-publish-attachment
+           )
+          ("org" :components ("org-notes" "org-static"))
+          ))
+#+END_SRC
+
+Of note is the =:base-directory= for notes and static, and the =output= folder.  No matter where I run =org-publish= it will export the files that are in the base directory.  So this works well for us having one big repo of all org files.
+
+
+There are two main components to the function, =org-notes= and =org-static=.  Notes takes anything within our base directory with our base extention and turns them into html.  org-static takes any files,a nd their folders, from the base directory that have any of our extensions, and brings them over whole-cloth to our publishing directory.  
+
+The final bottom component gives the name of this publishing template and everything it should include, so if we want to have different publishing projects with different setups, we could just append it to this =org-publish-project-alist=  This is made easier with the [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html#orge3dcdf4][inherit component]] 
+* Our Project Structure
+  For our grand export, we want to store everything (css, images, and org files) within the orgs directory.  This sample one ends up looking like so:
+
+#+NAME: our project structure
+#+BEGIN_SRC shell :results output list
+tree
+#+END_SRC
+
+#+RESULTS: our project structure
+: - .
+: - ├── aesthetic
+: - │   └── main.css
+: - ├── aesthetic.org
+: - ├── assets
+: - │   └── ii_gitlab_running.png
+: - ├── index.org
+: - └── org-to-blog.org
+: - 2 directories, 5 files
+* The Sitemap
+  You can add the following lines to the 'notes' component in [[*Our Export function][Our Export function]] to generate a sitemap of all org files.
+  #+NAME: sitemap
+  #+BEGIN_SRC elisp
+    ;; add to notes component
+    :auto-sitemap t                ; Generate sitemap.org automagically...
+    :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+    :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+  #+END_SRC
+  
+  We can then include the contents of one org file inside another with =#+INCLUDE: filename.org= so we can =#+INCLUDE:sitemap.org= in any of our other files to generate a links section, or for the index.org to create the entire page essentch.
+* Sample Work
+** Source code blocks
+   #+NAME: Some Shell Scripts
+   #+BEGIN_SRC shell :results output :exports both
+  pwd
+  echo "I am powerfull!" 
+   #+END_SRC
+
+   #+RESULTS: Some Shell Scripts
+   : /home/zz/ii/tooling/group-tooling
+   : I am Cool!
+   
+   And here is some javascript!
+   
+   #+NAME: Javascript goodness :results output code :exports both
+   #+BEGIN_SRC js 
+     function selfAffirmation (self) {
+       let selfAffirmation = `I, ${self} am great.  And I, ${self} am powerful!`
+       console.log(selfAffirmation)
+     }
+     selfAffirmation('Zach')
+   #+END_SRC
+
+   #+RESULTS: Javascript goodness :results output code :exports both
+   : I, Zach am great.  And I, Zach am powerful!
+   : undefined
+
+   #+RESULTS: Javascript goodness :results output raw :exports both
+   : I, Zach am great.  And I, Zach am powerful!
+   : undefined
+
+   #+RESULTS: Javascript goodness :results output list :exports both
+   : I, Zach am great.  And I, Zach am powerful!
+   : undefined
+
+** A Nice Table
+   
+  | Thing      | Coolness | location    | something | else   |
+  |------------+----------+-------------+-----------+--------|
+  | chair      | low      | living room | box       | sunset |
+  | video game | high     | rec room    | flower    | plant  |
+
+* Our iistyle
+  This is the CSS sheet we reference to style our pages.
+#+BEGIN_SRC css :tangle iistyle.css
+  /*
+  ii styling for orgs exported to html!
+  ,*/
+
+  /*
+  let's use variables, to quickly change color and font later.
+  ,*/
+  :root {
+    --primary_bg: aliceblue;
+    --primary_color: #111111;
+    --primary_font: 'Fira Sans', sans-serif;  /* currently requires dependency to google fonts, but this is an open source font.*/
+    --font-size: 24px;
+  }
+
+
+  body, html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--primary_bg);
+    color: var(--primary_color);
+    font-family: var(--primary_font);
+    font-size: var(--font-size);
+    font-weight: 300;
+  }
+
+  div#content {
+    width: 70%;
+    padding: 3em;
+  }
+#+END_SRC
+
+* Goals for the Web template
+** TODO Table of Contents is in a sidebar (similar to hackMD)
+** TODO src code block larger then text, and font inside smaller.
+** TODO src code block is black. results block a lighter black.
+** TODO images shown in html file.
+** TODO publish function included in our user-config
+** TODO level-1.org and level-2.org are included in =org-templates= so we can have org subdirectories.
+** TODO a basic, happy styling is reached for the pages.
+** TODO The todo sections look nicer.
+** TODO the name of the src code block is included in export.
+** DONE internal links work (the various subheadings, or linking a line in a doc.)
+   CLOSED: [2019-05-10 Fri 15:45]
+** DONE Our org files follow structure for ox-publish-to-html
+   CLOSED: [2019-05-10 Fri 15:45]
+   This means we follow the tutorial of [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html][publishing org-mode files to html]]
+** DONE Export includes custom CSS, so it is a nice font and bg-color
+   CLOSED: [2019-05-09 Thu 14:32]
+   You can do this by adding a link to your stylesheet with =#+HTML_HEAD=
+   
+   #+BEGIN_EXAMPLE elisp
+   #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://iistyle.netlify.com/iistyle.css" />
+   #+END_EXAMPLE
+   
+   We created a netlify page with a stylesheet, so we could reference it externally.
+   This also keeps the existing styles that come with it, but our stylesheet is placed below the built-in styling, which means our tags have priority.   
+   
+   This enables us to override their styling by redefining their classes.  See [[https://orgmode.org/manual/CSS-support.html#CSS-support][The Org Manual Page on CSS Support]] for more.
+** DONE code blocks are presented nicely withikn the file
+   CLOSED: [2019-05-09 Thu 14:35]
+   
+   This is done automatically by their export, and I like the style they ahve for it.  The most I'd do, right now, is make the background nearblack instead of transparent.
+** DONE todos show up nikcely in the file
+   CLOSED: [2019-05-09 Thu 15:26]
+   comes pre-styled with export.  We can adjust the color and look if we'd like though.
+
+* Links
+#+INCLUDE: sitemap.org

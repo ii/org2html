@@ -1,0 +1,18 @@
+#+SETUPFILE: ~/.emacs.d/org-templates/level-0.org
+#+TITLE: Aesthetic
+#+AUTHOR: Zach Mandeville
+
+* Our Aesthetic
+  Aesthetic refers to the style and stylesheets of our org-output.  it isgood!
+  #+NAME: something
+  #+BEGIN_SRC shell
+  echo "hi!"
+  #+END_SRC
+
+  #+RESULTS: something
+  : hi!
+  
+* Our Variables
+  We can set css variables for the main colors and fonts, to be able to switch them out easily later.
+* Our Fonts
+  We use IBM-Plex-Sans throughout APISnoop.  In this initial one, I am using Fira Sans.  Both are typographically great fonts that are fully open-source.  Another great one, though its serif, is Charter.
